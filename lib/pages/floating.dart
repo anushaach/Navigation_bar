@@ -12,6 +12,9 @@ class _FloatingState extends State<Floating> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Center(child: Text("Floating")),
+      ),
       bottomNavigationBar: FloatingNavbar(
         onTap: (int val) {},
         currentIndex: 0,

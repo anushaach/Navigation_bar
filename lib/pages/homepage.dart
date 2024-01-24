@@ -1,4 +1,5 @@
 import 'package:application_flutter/pages/drawer.dart';
+import 'package:application_flutter/pages/floating.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
@@ -50,7 +51,13 @@ class _HomepageState extends State<Homepage> {
               ),
               Tab(
                 child: TextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => Floating(),
+                        ));
+                  },
                   child: Text(
                     "New",
                     style: TextStyle(color: Colors.black),
