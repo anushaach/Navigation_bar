@@ -1,49 +1,36 @@
-import 'package:application_flutter/main.dart';
-import 'package:application_flutter/pages/drawer.dart';
-import 'package:application_flutter/pages/floating.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:google_nav_bar/google_nav_bar.dart';
+import 'package:flutter/src/widgets/framework.dart';
+import 'package:flutter/src/widgets/placeholder.dart';
 
-class Homepage extends StatefulWidget {
-  const Homepage({super.key});
+class MyHomePage extends StatefulWidget {
+  const MyHomePage({super.key});
 
   @override
-  State<Homepage> createState() => _HomepageState();
+  State<MyHomePage> createState() => _MyHomePageState();
 }
 
-class _HomepageState extends State<Homepage> {
-  // bool_boolIcon=false;
-  // IconData_lightIcon=Icons.wb_sunny;
-  // IconData_darkIcon=Icons.nights_stay;
+bool _boolIcon = false;
+IconData _lightIcon = Icons.wb_sunny;
+IconData _darktIcon = Icons.nights_stay;
 
-  // ThemeData_lightTheme=ThemeData(primaryColor: Colors.amber,
-  // brightness: Brightness.light,
-  // );
-  // ThemeData_darkTheme=ThemeData(primaryColor: Colors.cyan,
-  // brightness: Brightness.dark,
-  // );
+ThemeData _lightTheme = ThemeData(
+  primaryColor: Colors.amber,
+  brightness: Brightness.light,
+);
+ThemeData _darkTheme = ThemeData(
+  primaryColor: Colors.red,
+  brightness: Brightness.dark,
+);
 
+class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
-    bool _boolIcon = false;
-    IconData _lightIcon = Icons.wb_sunny;
-    IconData _darktIcon = Icons.nights_stay;
-
-    ThemeData _lightTheme = ThemeData(
-      primaryColor: Colors.amber,
-      brightness: Brightness.light,
-    );
-    ThemeData _darkTheme = ThemeData(
-      primaryColor: Colors.red,
-      brightness: Brightness.dark,
-    );
-
     return MaterialApp(
       theme: _boolIcon ? _darkTheme : _lightTheme,
       home: Scaffold(
         appBar: AppBar(
-          title: Text("Dark Theme"),
+          title: Center(child: Text("News app")),
           actions: [
             IconButton(
               onPressed: () {
@@ -57,96 +44,6 @@ class _HomepageState extends State<Homepage> {
             ),
           ],
         ),
-
-        // return DefaultTabController(
-        //   length: 5,
-        //   child: Scaffold(
-
-        //     drawer: Drawer(
-        //       child: drawer(),
-        //     ),
-
-        //     appBar: AppBar(
-        //       backgroundColor: Color.fromARGB(255, 231, 137, 49),
-        //       bottom: TabBar(
-        //         tabs: [
-        //           Tab(
-        //             child: Text(
-        //               "MU",
-        //               style: TextStyle(
-        //                 fontWeight: FontWeight.bold,
-        //                 fontSize: 19,
-        //                 color: Colors.black,
-        //               ),
-        //             ),
-        //           ),
-        //           Padding(
-        //             padding: const EdgeInsets.only(left: 0),
-        //             child: Tab(
-        //               child: Text(
-        //                 "Top",
-        //                 style: TextStyle(fontSize: 16, color: Colors.black),
-        //               ),
-        //             ),
-        //           ),
-        //           Tab(
-        //             child: Text(
-        //               "Hot",
-        //               style: TextStyle(fontSize: 16, color: Colors.black),
-        //             ),
-        //           ),
-        //           Tab(
-        //             child: TextButton(
-        //               onPressed: () {
-        //                 Navigator.push(
-        //                     context,
-        //                     MaterialPageRoute(
-        //                       builder: (context) => Floating(),
-        //                     ));
-        //               },
-        //               child: Text(
-        //                 "New",
-        //                 style: TextStyle(color: Colors.black),
-        //               ),
-        //             ),
-        //           ),
-        //           Tab(
-        //               child: IconButton(
-        //             onPressed: () {},
-        //             icon: Icon(
-        //               Icons.notification_add,
-        //               color: Colors.black,
-        //             ),
-        //           )),
-        //         ],
-        //       ),
-        //     ),
-        // bottomNavigationBar: Container(
-        //   color: const Color.fromARGB(255, 225, 182, 96),
-        //   child: const Padding(
-        //     padding: EdgeInsets.symmetric(horizontal: 5, vertical: 5),
-        //     child: GNav(
-        //         backgroundColor: Color.fromARGB(255, 225, 182, 96),
-        //         color: Colors.white,
-        //         activeColor: Colors.white,
-        //         tabBackgroundColor: Color.fromARGB(26, 36, 20, 1),
-        //         gap: 8,
-        //         tabs: [
-        //           GButton(
-        //             icon: Icons.home,
-        //             text: "Home",
-        //           ),
-        //           GButton(
-        //             icon: Icons.people,
-        //             text: "Account",
-        //           ),
-        //           GButton(
-        //             icon: Icons.menu,
-        //             text: "Menu",
-        //           ),
-        //         ]),
-        //   ),
-        // ),
         backgroundColor: Color.fromARGB(255, 247, 244, 242),
         bottomNavigationBar: CurvedNavigationBar(
             backgroundColor: Color.fromARGB(66, 206, 106, 44),
@@ -171,6 +68,9 @@ class _HomepageState extends State<Homepage> {
                     children: [
                       Text(
                         "15 hours Ago",
+                        style: TextStyle(
+                          color: Color.fromARGB(255, 91, 79, 75),
+                        ),
                         textAlign: TextAlign.start,
                       ),
                       SizedBox(
@@ -207,7 +107,9 @@ class _HomepageState extends State<Homepage> {
                     child: Text(
                       "Have a great day with my amazing client all the way from Nepal",
                       style: TextStyle(
-                          fontWeight: FontWeight.bold, fontSize: 18.0),
+                          color: Color.fromARGB(255, 91, 79, 75),
+                          fontWeight: FontWeight.bold,
+                          fontSize: 18.0),
                     ),
                   ),
                   SizedBox(
@@ -251,25 +153,52 @@ class _HomepageState extends State<Homepage> {
                           color: Colors.red,
                           size: 25,
                         ),
-                        Text("56.8k"),
-                        Icon(Icons.arrow_downward),
+                        Text(
+                          "56.8k",
+                          style: TextStyle(
+                            color: Color.fromARGB(255, 91, 79, 75),
+                          ),
+                        ),
+                        Icon(
+                          Icons.arrow_downward,
+                          color: Color.fromARGB(255, 91, 79, 75),
+                        ),
                         SizedBox(
                           width: 100,
                         ),
-                        Icon(Icons.comment),
+                        Icon(
+                          Icons.comment,
+                          color: Color.fromARGB(255, 91, 79, 75),
+                        ),
                         Padding(
                           padding: const EdgeInsets.all(8.0),
-                          child: Text("4879"),
+                          child: Text(
+                            "4879",
+                            style: TextStyle(
+                              color: Color.fromARGB(255, 91, 79, 75),
+                            ),
+                          ),
                         ),
                         SizedBox(
                           width: 100,
                         ),
-                        Icon(Icons.favorite),
-                        Icon(Icons.arrow_upward)
+                        Icon(
+                          Icons.favorite,
+                          color: Color.fromARGB(255, 91, 79, 75),
+                        ),
+                        Icon(
+                          Icons.arrow_upward,
+                          color: Color.fromARGB(255, 91, 79, 75),
+                        )
                       ],
                     ),
                   ),
-                  Text("15 hours ago"),
+                  Text(
+                    "15 hours ago",
+                    style: TextStyle(
+                      color: Color.fromARGB(255, 91, 79, 75),
+                    ),
+                  ),
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Column(
@@ -277,7 +206,9 @@ class _HomepageState extends State<Homepage> {
                         Text(
                           "Have a great day with my amazing client all the way from Nepal",
                           style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 20),
+                              color: Color.fromARGB(255, 91, 79, 75),
+                              fontWeight: FontWeight.bold,
+                              fontSize: 20),
                         ),
                         Container(
                           height: 120,
